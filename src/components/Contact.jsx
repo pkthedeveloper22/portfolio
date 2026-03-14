@@ -54,10 +54,7 @@ const WA_NUM   = "919496313744"   // country code + number, no + or spaces
 const WA_CARD_MSG = encodeURIComponent(
   "Hi Subin! \uD83D\uDC4B\n\n" +
   "I came across your portfolio and I\u2019m really impressed by your Django and Python work.\n\n" +
-  "I\u2019d love to connect and discuss a potential opportunity that might interest you.\n\n" +
-  "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n" +
-  "*Subin PK \u2014 Python & Django Developer*\n" +
-  "\uD83D\uDCCD Kerala, India \u00B7 Open to Remote"
+  "I\u2019d love to connect and discuss a potential opportunity that might interest you."
 )
 
 const contactLinks = [
@@ -162,14 +159,6 @@ export default function Contact() {
         `*${finalSubject}*`,
         ``,
         message,
-        ``,
-        `──────────────────`,
-        `🌐 Portfolio: https://subin-pk.dev`,
-        `📧 ${EMAIL}`,
-        `📱 Contacted via WhatsApp`,
-        `──────────────────`,
-        `*Subin PK — Python & Django Developer*`,
-        `📍 Kerala, India · Open to Remote`,
       ].join("\n")
       window.open(`https://wa.me/${WA_NUM}?text=${encodeURIComponent(waText)}`, "_blank")
     }
