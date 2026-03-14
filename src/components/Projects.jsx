@@ -1,10 +1,21 @@
 import { motion } from "framer-motion"
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
+
+const ExternalIcon = () => (
+  <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+    <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+  </svg>
+)
+const GithubIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+  </svg>
+)
 
 const projects = [
   {
     title: "College Information System",
-    desc: "A comprehensive Django-based platform to manage students, staff, courses, and attendance — complete with secure authentication and role-based admin dashboards.",
+    desc: "A comprehensive Django-based platform to manage students, staff, courses, and attendance — with secure authentication and role-based admin dashboards.",
     tags: ["Django", "Python", "MySQL", "Bootstrap", "Auth"],
     accent: "#7c5cfc",
     icon: "🎓",
@@ -47,7 +58,7 @@ export default function Projects() {
         </p>
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
         {projects.map((p, i) => (
           <motion.div
             key={p.title}
@@ -55,167 +66,184 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1, duration: 0.55 }}
             viewport={{ once: true }}
+            className="project-card"
             style={{
               background: "#111118",
               border: "1px solid rgba(255,255,255,0.07)",
               borderRadius: 20,
-              padding: "32px 36px",
-              display: "grid",
-              gridTemplateColumns: "1fr auto",
-              gap: 32,
-              alignItems: "center",
+              padding: "28px 28px",
               position: "relative",
               overflow: "hidden",
-              transition: "border-color .25s",
+              transition: "border-color .25s, transform .25s",
             }}
-            whileHover={{ y: -4 }}
+            whileHover={{ y: -3 }}
             onMouseEnter={e => e.currentTarget.style.borderColor = `${p.accent}40`}
             onMouseLeave={e => e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)"}>
 
-            {/* Accent glow */}
+            {/* Glows */}
             <div style={{
               position: "absolute", top: -60, left: -40,
               width: 220, height: 220, borderRadius: "50%",
-              background: `radial-gradient(circle, ${p.accent}15, transparent 70%)`,
+              background: `radial-gradient(circle, ${p.accent}12, transparent 70%)`,
               pointerEvents: "none",
             }} />
-            {/* Right glow too */}
             <div style={{
               position: "absolute", bottom: -40, right: -40,
               width: 160, height: 160, borderRadius: "50%",
-              background: `radial-gradient(circle, ${p.accent}0a, transparent 70%)`,
+              background: `radial-gradient(circle, ${p.accent}08, transparent 70%)`,
               pointerEvents: "none",
             }} />
 
-            {/* Left: content */}
-            <div>
-              <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 14 }}>
-                <div style={{
-                  width: 46, height: 46, borderRadius: 13,
-                  background: `${p.accent}18`,
-                  border: `1px solid ${p.accent}35`,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: 21, flexShrink: 0,
-                }}>{p.icon}</div>
-                <div>
-                  <h3 style={{
-                    fontFamily: "'Syne', sans-serif",
-                    fontSize: 20, fontWeight: 700, color: "#f0eefa",
-                    marginBottom: 2,
-                  }}>{p.title}</h3>
-                  {/* Live indicator */}
-                  <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                    <span style={{
-                      width: 5, height: 5, borderRadius: "50%",
-                      background: "#22d3a5",
-                      boxShadow: "0 0 6px #22d3a5",
-                      display: "inline-block",
-                    }} />
-                    <span style={{ fontSize: 11, color: "#22d3a5", letterSpacing: "0.04em" }}>
-                      Live on Render
-                    </span>
+            {/* Card inner: left content + right buttons */}
+            <div className="project-inner" style={{
+              display: "grid",
+              gridTemplateColumns: "1fr auto",
+              gap: 24,
+              alignItems: "start",
+            }}>
+
+              {/* Left: content */}
+              <div>
+                {/* Title row */}
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+                  <div style={{
+                    width: 42, height: 42, borderRadius: 12, flexShrink: 0,
+                    background: `${p.accent}18`,
+                    border: `1px solid ${p.accent}35`,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: 20,
+                  }}>{p.icon}</div>
+                  <div>
+                    <h3 style={{
+                      fontFamily: "'Syne', sans-serif",
+                      fontSize: "clamp(16px, 2.5vw, 20px)",
+                      fontWeight: 700, color: "#f0eefa", marginBottom: 3,
+                    }}>{p.title}</h3>
+                    <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                      <span style={{
+                        width: 5, height: 5, borderRadius: "50%",
+                        background: "#22d3a5", boxShadow: "0 0 6px #22d3a5",
+                        display: "inline-block", flexShrink: 0,
+                      }} />
+                      <span style={{ fontSize: 11, color: "#22d3a5", letterSpacing: "0.04em" }}>
+                        Live on Render
+                      </span>
+                    </div>
                   </div>
+                </div>
+
+                {/* Description */}
+                <p style={{
+                  fontSize: "clamp(13px, 1.8vw, 15px)",
+                  color: "#6e6a83", lineHeight: 1.75, marginBottom: 16,
+                }}>{p.desc}</p>
+
+                {/* Highlights */}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: 14 }}>
+                  {p.highlights.map(h => (
+                    <span key={h} style={{
+                      fontSize: 12, color: "#5e5b73",
+                      display: "flex", alignItems: "center", gap: 4,
+                    }}>
+                      <span style={{ color: p.accent, fontSize: 9 }}>✦</span>{h}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Tags */}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  {p.tags.map(tag => (
+                    <span key={tag} style={{
+                      fontSize: 11, padding: "3px 10px", borderRadius: 100,
+                      background: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      color: "#7a7792",
+                    }}>{tag}</span>
+                  ))}
                 </div>
               </div>
 
-              <p style={{
-                fontSize: 15, color: "#6e6a83", lineHeight: 1.75,
-                maxWidth: 600, marginBottom: 20,
-              }}>{p.desc}</p>
-
-              {/* Highlights */}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginBottom: 20 }}>
-                {p.highlights.map(h => (
-                  <span key={h} style={{
-                    fontSize: 12, color: "#5e5b73",
-                    display: "flex", alignItems: "center", gap: 5,
+              {/* Right: buttons — desktop only via CSS */}
+              <div className="project-btns-desktop" style={{
+                display: "flex", flexDirection: "column", gap: 10,
+                flexShrink: 0, minWidth: 120,
+              }}>
+                <a href={p.live} target="_blank" rel="noopener noreferrer"
+                  className="btn-live"
+                  style={{
+                    display: "flex", alignItems: "center", justifyContent: "center", gap: 7,
+                    padding: "11px 18px", borderRadius: 10,
+                    background: `linear-gradient(135deg, ${p.accent}cc, ${p.accent})`,
+                    color: "#fff", fontSize: 13, fontWeight: 600,
+                    boxShadow: `0 0 16px ${p.accent}40`,
+                    transition: "all .2s", whiteSpace: "nowrap",
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.boxShadow = `0 0 28px ${p.accent}70`
+                    e.currentTarget.style.transform = "translateY(-1px)"
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.boxShadow = `0 0 16px ${p.accent}40`
+                    e.currentTarget.style.transform = "translateY(0)"
                   }}>
-                    <span style={{ color: p.accent, fontSize: 10 }}>✦</span>
-                    {h}
-                  </span>
-                ))}
-              </div>
-
-              {/* Tags */}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {p.tags.map(tag => (
-                  <span key={tag} style={{
-                    fontSize: 12, padding: "4px 12px", borderRadius: 100,
-                    background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    color: "#7a7792",
-                  }}>{tag}</span>
-                ))}
+                  <ExternalIcon /> Live Demo
+                </a>
+                <a href={p.github} target="_blank" rel="noopener noreferrer"
+                  style={{
+                    display: "flex", alignItems: "center", justifyContent: "center", gap: 7,
+                    padding: "11px 18px", borderRadius: 10,
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    background: "rgba(255,255,255,0.03)",
+                    fontSize: 13, color: "#a09db8",
+                    transition: "all .2s", whiteSpace: "nowrap",
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.25)"
+                    e.currentTarget.style.color = "#f0eefa"
+                    e.currentTarget.style.background = "rgba(255,255,255,0.07)"
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"
+                    e.currentTarget.style.color = "#a09db8"
+                    e.currentTarget.style.background = "rgba(255,255,255,0.03)"
+                  }}>
+                  <GithubIcon /> GitHub
+                </a>
               </div>
             </div>
 
-            {/* Right: action buttons */}
-            <div style={{
-              display: "flex", flexDirection: "column", gap: 10,
-              flexShrink: 0, minWidth: 130,
+            {/* Mobile buttons row — shown only on small screens */}
+            <div className="project-btns-mobile" style={{
+              display: "none",
+              gap: 10, marginTop: 20,
             }}>
-
-              {/* Live Demo — primary */}
-              <a
-                href={p.live}
-                target="_blank"
-                rel="noopener noreferrer"
+              <a href={p.live} target="_blank" rel="noopener noreferrer"
                 style={{
-                  display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-                  padding: "11px 20px", borderRadius: 10,
+                  flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 7,
+                  padding: "12px", borderRadius: 10,
                   background: `linear-gradient(135deg, ${p.accent}cc, ${p.accent})`,
                   color: "#fff", fontSize: 13, fontWeight: 600,
-                  boxShadow: `0 0 18px ${p.accent}40`,
-                  transition: "all .2s",
-                  border: "none",
-                  letterSpacing: "0.01em",
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.boxShadow = `0 0 28px ${p.accent}70`
-                  e.currentTarget.style.transform = "translateY(-1px)"
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.boxShadow = `0 0 18px ${p.accent}40`
-                  e.currentTarget.style.transform = "translateY(0)"
+                  boxShadow: `0 0 16px ${p.accent}40`,
                 }}>
-                <FaExternalLinkAlt size={12} />
-                Live Demo
+                <ExternalIcon /> Live Demo
               </a>
-
-              {/* GitHub — secondary */}
-              <a
-                href={p.github}
-                target="_blank"
-                rel="noopener noreferrer"
+              <a href={p.github} target="_blank" rel="noopener noreferrer"
                 style={{
-                  display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-                  padding: "11px 20px", borderRadius: 10,
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  background: "rgba(255,255,255,0.03)",
+                  flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 7,
+                  padding: "12px", borderRadius: 10,
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  background: "rgba(255,255,255,0.04)",
                   fontSize: 13, color: "#a09db8",
-                  transition: "all .2s",
-                  letterSpacing: "0.01em",
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.25)"
-                  e.currentTarget.style.color = "#f0eefa"
-                  e.currentTarget.style.background = "rgba(255,255,255,0.07)"
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"
-                  e.currentTarget.style.color = "#a09db8"
-                  e.currentTarget.style.background = "rgba(255,255,255,0.03)"
                 }}>
-                <FaGithub size={14} />
-                GitHub
+                <GithubIcon /> GitHub
               </a>
-
             </div>
+
           </motion.div>
         ))}
       </div>
 
-      {/* Bottom CTA — view all on hub */}
+      {/* Bottom CTA */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -245,10 +273,9 @@ export default function Projects() {
             e.currentTarget.style.borderColor = "rgba(124,92,252,0.3)"
             e.currentTarget.style.boxShadow = "none"
           }}>
-          <FaExternalLinkAlt size={13} />
+          <ExternalIcon />
           View All Projects on Project Hub
-          <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2"
-            viewBox="0 0 24 24" style={{ marginLeft: 2 }}>
+          <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </a>
@@ -258,9 +285,16 @@ export default function Projects() {
       </motion.div>
 
       <style>{`
-        @media (max-width: 640px) {
-          #projects .section > div > div {
+        /* Tablet: stack buttons inside card */
+        @media (max-width: 700px) {
+          .project-inner {
             grid-template-columns: 1fr !important;
+          }
+          .project-btns-desktop {
+            display: none !important;
+          }
+          .project-btns-mobile {
+            display: flex !important;
           }
         }
       `}</style>

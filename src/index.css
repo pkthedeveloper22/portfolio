@@ -135,3 +135,131 @@ a { text-decoration: none; color: inherit; transition: color .2s; }
   background: linear-gradient(90deg, transparent, var(--border2), transparent);
   margin: 0;
 }
+
+/* ============================================
+   GLOBAL RESPONSIVE — All breakpoints
+   ============================================ */
+
+/* Large desktop (1280px+) — already handled by max-width */
+
+/* Tablet landscape (1024px) */
+@media (max-width: 1024px) {
+  .section {
+    padding: 80px 32px !important;
+  }
+}
+
+/* Tablet portrait (768px) */
+@media (max-width: 768px) {
+  .section {
+    padding: 64px 24px !important;
+  }
+
+  /* About grid — stack */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  /* Hero — stack photo above text */
+  .hero-photo {
+    width: clamp(200px, 60vw, 300px) !important;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: clamp(26px, 6vw, 38px) !important;
+  }
+
+  /* Skills grid — 2 col on tablet */
+  #skills .section > div > div:last-child {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Contact layout — stack */
+  .contact-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Mobile (480px) */
+@media (max-width: 480px) {
+  .section {
+    padding: 48px 16px !important;
+  }
+
+  /* Navbar */
+  nav > div {
+    padding: 0 16px !important;
+  }
+
+  /* Hero section */
+  section[style*="minHeight"] {
+    padding: 100px 20px 60px !important;
+    gap: 36px !important;
+  }
+
+  /* Hero buttons — stack */
+  section[style*="minHeight"] > div > div[style*="flexWrap"] {
+    flex-direction: column !important;
+  }
+
+  section[style*="minHeight"] > div > div[style*="flexWrap"] a {
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Skills grid — 1 col on mobile */
+  #skills .section > div > div:last-child {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Skills icon cloud — tighter */
+  #skills .section > div > div:first-child {
+    padding: 16px !important;
+    gap: 8px !important;
+  }
+
+  /* Contact cards — 1 col */
+  .contact-cards {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* About stats — 2 col */
+  .about-grid > div > div[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Project cards */
+  .project-card {
+    padding: 20px 16px !important;
+  }
+
+  /* Footer */
+  footer {
+    flex-direction: column !important;
+    text-align: center !important;
+    padding: 24px 16px !important;
+    gap: 12px !important;
+  }
+}
+
+/* Very small screens (360px) */
+@media (max-width: 360px) {
+  .section {
+    padding: 40px 12px !important;
+  }
+
+  h1 {
+    font-size: 32px !important;
+  }
+
+  .section-title {
+    font-size: 24px !important;
+  }
+
+  /* About stats — 1 col on tiny screens */
+  .about-grid > div > div[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}

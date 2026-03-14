@@ -5,14 +5,18 @@ const techStack = ["Python", "Django", "JavaScript", "PostgreSQL", "MySQL", "RES
 
 export default function Hero() {
   return (
-    <section style={{
+    <section className="hero-section" style={{
       minHeight: "100vh",
-      display: "flex", alignItems: "center",
+      display: "flex",
+      alignItems: "center",
       padding: "120px 48px 80px",
-      maxWidth: 1280, margin: "0 auto",
-      position: "relative", overflow: "visible",
+      maxWidth: 1280,
+      margin: "0 auto",
+      position: "relative",
+      overflow: "visible",
       gap: 72,
     }}>
+
       {/* Background blobs */}
       <div style={{
         position: "fixed", width: 700, height: 700, borderRadius: "50%",
@@ -42,9 +46,10 @@ export default function Hero() {
         className="hero-photo"
         style={{
           flexShrink: 0,
-          width: "clamp(260px, 28vw, 380px)",
+          width: "clamp(220px, 28vw, 380px)",
           aspectRatio: "1",
-          position: "relative", zIndex: 1,
+          position: "relative",
+          zIndex: 1,
         }}>
 
         {/* Spinning conic gradient border */}
@@ -57,27 +62,22 @@ export default function Hero() {
             zIndex: -1, filter: "blur(1px)",
           }}
         />
-        {/* Inner dark mask */}
         <div style={{
           position: "absolute", inset: 2, borderRadius: "27px",
           background: "#0a0a0f", zIndex: 0,
         }} />
 
-        {/* Photo frame */}
+        {/* Photo */}
         <div style={{
           position: "absolute", inset: 4, borderRadius: "24px",
-          overflow: "hidden", zIndex: 1,
-          background: "#111",
+          overflow: "hidden", zIndex: 1, background: "#111",
         }}>
           <img
             src={profilePhoto}
             alt="Subin PK — Python Developer"
             style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center 10%",
-              /* Professional enhancements */
+              width: "100%", height: "100%",
+              objectFit: "cover", objectPosition: "center 10%",
               filter: "contrast(1.08) brightness(0.96) saturate(0.85)",
               transition: "transform .5s ease, filter .4s ease",
               display: "block",
@@ -91,14 +91,11 @@ export default function Hero() {
               e.target.style.filter = "contrast(1.08) brightness(0.96) saturate(0.85)"
             }}
           />
-          {/* Bottom gradient fade — blends photo into dark bg */}
           <div style={{
-            position: "absolute", bottom: 0, left: 0, right: 0,
-            height: "35%",
+            position: "absolute", bottom: 0, left: 0, right: 0, height: "35%",
             background: "linear-gradient(to top, rgba(10,10,15,0.75) 0%, transparent 100%)",
             pointerEvents: "none",
           }} />
-          {/* Subtle purple tint overlay */}
           <div style={{
             position: "absolute", inset: 0,
             background: "linear-gradient(135deg, rgba(124,92,252,0.08) 0%, transparent 60%)",
@@ -106,44 +103,46 @@ export default function Hero() {
           }} />
         </div>
 
-        {/* Floating badge — experience */}
+        {/* Badge — experience */}
         <motion.div
           animate={{ y: [0, -7, 0] }}
           transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+          className="hero-badge hero-badge-bottom"
           style={{
             position: "absolute", bottom: -18, right: -28, zIndex: 10,
             background: "rgba(14,14,22,0.95)",
             border: "1px solid rgba(124,92,252,0.3)",
             borderRadius: 14, padding: "11px 16px",
             display: "flex", alignItems: "center", gap: 10,
-            boxShadow: "0 12px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(124,92,252,0.1)",
+            boxShadow: "0 12px 32px rgba(0,0,0,0.6)",
             backdropFilter: "blur(12px)",
+            whiteSpace: "nowrap",
           }}>
           <div style={{
-            width: 36, height: 36, borderRadius: 10,
+            width: 36, height: 36, borderRadius: 10, flexShrink: 0,
             background: "linear-gradient(135deg, #7c5cfc, #c084fc)",
             display: "flex", alignItems: "center", justifyContent: "center", fontSize: 17,
           }}>🐍</div>
           <div>
-            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 14, fontWeight: 700, color: "#f0eefa" }}>
-              1.5+ Years
-            </div>
+            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 14, fontWeight: 700, color: "#f0eefa" }}>1.5+ Years</div>
             <div style={{ fontSize: 11, color: "#5e5b73" }}>Django Developer</div>
           </div>
         </motion.div>
 
-        {/* Floating badge — projects */}
+        {/* Badge — projects */}
         <motion.div
           animate={{ y: [0, 7, 0] }}
           transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+          className="hero-badge hero-badge-top"
           style={{
             position: "absolute", top: -18, right: -28, zIndex: 10,
             background: "rgba(14,14,22,0.95)",
             border: "1px solid rgba(56,189,248,0.25)",
             borderRadius: 14, padding: "10px 14px",
             display: "flex", alignItems: "center", gap: 8,
-            boxShadow: "0 12px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(56,189,248,0.08)",
+            boxShadow: "0 12px 32px rgba(0,0,0,0.6)",
             backdropFilter: "blur(12px)",
+            whiteSpace: "nowrap",
           }}>
           <span style={{ fontSize: 17 }}>🚀</span>
           <div>
@@ -152,18 +151,21 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Glow behind the frame */}
+        {/* Glow behind frame */}
         <div style={{
           position: "absolute", inset: -20, borderRadius: "40px",
           background: "radial-gradient(ellipse, rgba(124,92,252,0.18) 0%, transparent 70%)",
           zIndex: -2, pointerEvents: "none",
         }} />
-
       </motion.div>
 
       {/* ── RIGHT: Text ── */}
-      <div style={{ flex: "1 1 0", minWidth: 0, position: "relative", zIndex: 1 }}>
+      <div className="hero-text" style={{
+        flex: "1 1 0", minWidth: 0,
+        position: "relative", zIndex: 1,
+      }}>
 
+        {/* Available badge */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -173,7 +175,7 @@ export default function Hero() {
             padding: "8px 18px", borderRadius: 100,
             border: "1px solid rgba(124,92,252,0.3)",
             background: "rgba(124,92,252,0.1)",
-            marginBottom: 32, fontSize: 13, color: "#c084fc",
+            marginBottom: 28, fontSize: 13, color: "#c084fc",
           }}>
           <span style={{
             width: 6, height: 6, borderRadius: "50%", background: "#7c5cfc",
@@ -182,13 +184,14 @@ export default function Hero() {
           Available for opportunities
         </motion.div>
 
+        {/* Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
           style={{
             fontFamily: "'Syne', sans-serif",
-            fontSize: "clamp(38px, 5vw, 72px)",
+            fontSize: "clamp(34px, 5vw, 72px)",
             fontWeight: 800, lineHeight: 1.05,
             letterSpacing: "-0.03em", color: "#f0eefa",
             marginBottom: 14,
@@ -202,26 +205,29 @@ export default function Hero() {
           }}>Subin PK</span>
         </motion.h1>
 
+        {/* Role */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.22 }}
           style={{
             fontFamily: "'Syne', sans-serif",
-            fontSize: "clamp(15px, 2vw, 21px)",
+            fontSize: "clamp(14px, 2vw, 21px)",
             fontWeight: 600, color: "#7a7792",
-            marginBottom: 20, letterSpacing: "-0.01em",
+            marginBottom: 16, letterSpacing: "-0.01em",
           }}>
           Python · Django · Full Stack Developer
         </motion.p>
 
+        {/* Description */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.32 }}
           style={{
-            fontSize: 16, color: "#5e5b73", lineHeight: 1.8,
-            maxWidth: 460, marginBottom: 40,
+            fontSize: "clamp(14px, 1.6vw, 16px)",
+            color: "#5e5b73", lineHeight: 1.8,
+            maxWidth: 460, marginBottom: 36,
           }}>
           Building scalable, production-ready web applications with Django.
           1.5+ years turning ideas into live products — from database design to deployment.
@@ -232,10 +238,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.42 }}
-          style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 48 }}>
+          className="hero-ctas"
+          style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 40 }}>
 
-          <a href="#projects" style={{
-            padding: "13px 28px", borderRadius: 10,
+          <a href="#projects" className="cta-primary" style={{
+            padding: "12px 24px", borderRadius: 10,
             background: "linear-gradient(135deg, #7c5cfc, #c084fc)",
             color: "#fff", fontSize: 15, fontWeight: 500,
             boxShadow: "0 0 28px rgba(124,92,252,0.38)", transition: "box-shadow .2s",
@@ -249,8 +256,8 @@ export default function Hero() {
             </svg>
           </a>
 
-          <a href="#contact" style={{
-            padding: "13px 28px", borderRadius: 10,
+          <a href="#contact" className="cta-secondary" style={{
+            padding: "12px 24px", borderRadius: 10,
             border: "1px solid rgba(255,255,255,0.11)",
             background: "rgba(255,255,255,0.04)",
             color: "#a09db8", fontSize: 15, transition: "all .2s",
@@ -260,8 +267,8 @@ export default function Hero() {
             Contact Me
           </a>
 
-          <a href="/Subin_PK_CV.pdf" download style={{
-            padding: "13px 28px", borderRadius: 10,
+          <a href="/Subin_PK_CV.pdf" download className="cta-resume" style={{
+            padding: "12px 24px", borderRadius: 10,
             border: "1px solid rgba(56,189,248,0.25)",
             background: "rgba(56,189,248,0.06)",
             color: "#38bdf8", fontSize: 15, transition: "all .2s",
@@ -284,7 +291,7 @@ export default function Hero() {
           style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
           {techStack.map(tech => (
             <span key={tech} style={{
-              padding: "5px 13px", borderRadius: 100,
+              padding: "5px 12px", borderRadius: 100,
               background: "rgba(255,255,255,0.035)",
               border: "1px solid rgba(255,255,255,0.07)",
               fontSize: 12, color: "#5e5b73",
@@ -298,6 +305,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
+        className="scroll-indicator"
         style={{
           position: "absolute", bottom: 28, left: "50%", transform: "translateX(-50%)",
           display: "flex", flexDirection: "column", alignItems: "center", gap: 8, zIndex: 1,
@@ -311,14 +319,98 @@ export default function Hero() {
           0%   { background-position: -200% center; }
           100% { background-position:  200% center; }
         }
-        @media (max-width: 900px) {
-          .hero-photo { width: clamp(200px, 55vw, 280px) !important; }
-          section {
+
+        /* ── Tablet landscape (≤1024px) ── */
+        @media (max-width: 1024px) {
+          .hero-section {
+            padding: 100px 32px 80px !important;
+            gap: 48px !important;
+          }
+          .hero-photo {
+            width: clamp(200px, 32vw, 300px) !important;
+          }
+        }
+
+        /* ── Tablet portrait (≤768px) ── */
+        @media (max-width: 768px) {
+          .hero-section {
             flex-direction: column !important;
             align-items: center !important;
             text-align: center !important;
-            padding-top: 100px !important;
-            gap: 48px !important;
+            padding: 100px 28px 64px !important;
+            gap: 40px !important;
+            min-height: auto !important;
+          }
+          .hero-photo {
+            width: clamp(180px, 55vw, 260px) !important;
+          }
+          .hero-badge-bottom {
+            right: -12px !important;
+            bottom: -14px !important;
+          }
+          .hero-badge-top {
+            right: -12px !important;
+            top: -14px !important;
+          }
+          .hero-text {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+          .hero-ctas {
+            justify-content: center !important;
+          }
+          .scroll-indicator {
+            display: none !important;
+          }
+        }
+
+        /* ── Mobile (≤480px) ── */
+        @media (max-width: 480px) {
+          .hero-section {
+            padding: 90px 16px 56px !important;
+            gap: 32px !important;
+          }
+          .hero-photo {
+            width: clamp(160px, 70vw, 220px) !important;
+          }
+          /* Badges smaller on mobile */
+          .hero-badge {
+            padding: 8px 10px !important;
+            gap: 7px !important;
+          }
+          .hero-badge-bottom {
+            right: -8px !important;
+            bottom: -10px !important;
+          }
+          .hero-badge-top {
+            right: -8px !important;
+            top: -10px !important;
+          }
+          /* Stack CTAs vertically on mobile */
+          .hero-ctas {
+            flex-direction: column !important;
+            width: 100% !important;
+          }
+          .cta-primary,
+          .cta-secondary,
+          .cta-resume {
+            width: 100% !important;
+            justify-content: center !important;
+            text-align: center !important;
+          }
+        }
+
+        /* ── Very small (≤360px) ── */
+        @media (max-width: 360px) {
+          .hero-section {
+            padding: 80px 12px 48px !important;
+          }
+          .hero-photo {
+            width: 150px !important;
+          }
+          .hero-badge {
+            display: none !important;
           }
         }
       `}</style>
