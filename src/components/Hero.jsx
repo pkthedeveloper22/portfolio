@@ -77,28 +77,42 @@ export default function Hero() {
             alt="Subin PK — Python Developer"
             style={{
               width: "100%", height: "100%",
-              objectFit: "cover", objectPosition: "center 10%",
-              filter: "contrast(1.08) brightness(0.96) saturate(0.85)",
+              objectFit: "cover", objectPosition: "center 8%",
+              filter: "brightness(0.88) contrast(1.05) saturate(0.95)",
               transition: "transform .5s ease, filter .4s ease",
               display: "block",
             }}
             onMouseEnter={e => {
               e.target.style.transform = "scale(1.04)"
-              e.target.style.filter = "contrast(1.1) brightness(1.0) saturate(0.9)"
+              e.target.style.filter = "brightness(0.96) contrast(1.05) saturate(1.0)"
             }}
             onMouseLeave={e => {
               e.target.style.transform = "scale(1)"
-              e.target.style.filter = "contrast(1.08) brightness(0.96) saturate(0.85)"
+              e.target.style.filter = "brightness(0.88) contrast(1.05) saturate(0.95)"
             }}
           />
+          {/* Heavy bottom fade — blends into dark bg */}
           <div style={{
-            position: "absolute", bottom: 0, left: 0, right: 0, height: "35%",
-            background: "linear-gradient(to top, rgba(10,10,15,0.75) 0%, transparent 100%)",
+            position: "absolute", bottom: 0, left: 0, right: 0, height: "45%",
+            background: "linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.4) 60%, transparent 100%)",
             pointerEvents: "none",
           }} />
+          {/* Left edge fade */}
+          <div style={{
+            position: "absolute", top: 0, left: 0, bottom: 0, width: "25%",
+            background: "linear-gradient(to right, rgba(10,10,15,0.5) 0%, transparent 100%)",
+            pointerEvents: "none",
+          }} />
+          {/* Purple tint overlay — ties to theme */}
           <div style={{
             position: "absolute", inset: 0,
-            background: "linear-gradient(135deg, rgba(124,92,252,0.08) 0%, transparent 60%)",
+            background: "linear-gradient(160deg, rgba(124,92,252,0.18) 0%, rgba(56,189,248,0.06) 50%, transparent 70%)",
+            pointerEvents: "none",
+          }} />
+          {/* Dark vignette around edges */}
+          <div style={{
+            position: "absolute", inset: 0,
+            background: "radial-gradient(ellipse at center, transparent 45%, rgba(10,10,15,0.6) 100%)",
             pointerEvents: "none",
           }} />
         </div>
