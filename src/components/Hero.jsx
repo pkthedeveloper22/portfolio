@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import profilePhoto from "../assets/profile.png"
 
-const techStack = ["Python", "Django", "JavaScript", "PostgreSQL", "MySQL", "REST APIs", "Bootstrap"]
+const techStack = ["Python", "Django", "React", "JavaScript", "PostgreSQL", "MySQL", "REST APIs", "Bootstrap"]
 
 export default function Hero() {
   return (
@@ -230,7 +230,7 @@ export default function Hero() {
             fontWeight: 600, color: "#7a7792",
             marginBottom: 16, letterSpacing: "-0.01em",
           }}>
-          Python · Django · Full Stack Developer
+          Python · Django · Full Stack Developer · React
         </motion.p>
 
         {/* Description */}
