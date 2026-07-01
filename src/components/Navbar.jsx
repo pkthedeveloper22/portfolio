@@ -67,18 +67,51 @@ export default function Navbar() {
                 {link}
               </a>
             ))}
-            <a href="mailto:subinsuresh8088@gmail.com"
-              style={{
-                marginLeft: 8, padding: "9px 20px", borderRadius: 8,
-                background: "linear-gradient(135deg, #7c5cfc, #c084fc)",
-                color: "#fff", fontSize: 14, fontWeight: 500,
-                boxShadow: "0 0 20px rgba(124,92,252,0.35)",
-                transition: "box-shadow .2s",
-              }}
-              onMouseEnter={e => e.currentTarget.style.boxShadow = "0 0 28px rgba(124,92,252,0.55)"}
-              onMouseLeave={e => e.currentTarget.style.boxShadow = "0 0 20px rgba(124,92,252,0.35)"}>
-              Hire Me
-            </a>
+           <a
+  href="https://project-portfolio-ruddy-five.vercel.app/"
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{
+    marginLeft: 8,
+    padding: "9px 20px",
+    borderRadius: 8,
+    border: "1px solid rgba(124,92,252,0.35)",
+    background: "rgba(124,92,252,0.08)",
+    color: "#f0eefa",
+    fontSize: 14,
+    fontWeight: 500,
+    transition: "all .25s",
+  }}
+  onMouseEnter={e => {
+    e.currentTarget.style.background = "rgba(124,92,252,0.18)"
+    e.currentTarget.style.borderColor = "#7c5cfc"
+  }}
+  onMouseLeave={e => {
+    e.currentTarget.style.background = "rgba(124,92,252,0.08)"
+    e.currentTarget.style.borderColor = "rgba(124,92,252,0.35)"
+  }}
+>
+  Explore Work
+</a>
+
+<a
+  href="mailto:subinsuresh8088@gmail.com"
+  style={{
+    marginLeft: 8,
+    padding: "9px 20px",
+    borderRadius: 8,
+    background: "linear-gradient(135deg, #7c5cfc, #c084fc)",
+    color: "#fff",
+    fontSize: 14,
+    fontWeight: 500,
+    boxShadow: "0 0 20px rgba(124,92,252,0.35)",
+    transition: "box-shadow .2s",
+  }}
+  onMouseEnter={e => e.currentTarget.style.boxShadow = "0 0 28px rgba(124,92,252,0.55)"}
+  onMouseLeave={e => e.currentTarget.style.boxShadow = "0 0 20px rgba(124,92,252,0.35)"}
+>
+  Hire Me
+</a>
           </div>
 
           {/* Mobile hamburger */}
