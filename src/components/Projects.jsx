@@ -251,7 +251,7 @@ export default function Projects() {
         transition={{ delay: 0.3 }}
         style={{ textAlign: "center", marginTop: 48 }}>
         <a
-          href="https://developer-project-hub.onrender.com/"
+          href="https://project-portfolio-ruddy-five.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
           style={{
