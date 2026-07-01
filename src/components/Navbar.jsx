@@ -146,44 +146,84 @@ export default function Navbar() {
         </div>
 
         {/* Mobile dropdown menu */}
-        <div className="nav-mobile-menu" style={{
-          display: menuOpen ? "flex" : "none",
-          flexDirection: "column",
-          padding: "12px 24px 24px",
-          gap: 4,
-          borderTop: "1px solid rgba(255,255,255,0.06)",
-        }}>
-          {links.map(link => (
-            <a key={link} href={`#${link.toLowerCase()}`}
-              onClick={handleNav}
-              style={{
-                fontSize: 16, color: "#a09db8",
-                padding: "14px 12px", borderRadius: 10,
-                transition: "all .2s", fontWeight: 400,
-                borderBottom: "1px solid rgba(255,255,255,0.04)",
-              }}
-              onMouseEnter={e => {
-                e.target.style.color = "#f0eefa"
-                e.target.style.background = "rgba(255,255,255,0.04)"
-              }}
-              onMouseLeave={e => {
-                e.target.style.color = "#a09db8"
-                e.target.style.background = "transparent"
-              }}>
-              {link}
-            </a>
-          ))}
-          <a href="mailto:subinsuresh8088@gmail.com"
-            onClick={handleNav}
-            style={{
-              marginTop: 8, padding: "14px", borderRadius: 10, textAlign: "center",
-              background: "linear-gradient(135deg, #7c5cfc, #c084fc)",
-              color: "#fff", fontSize: 15, fontWeight: 500,
-              boxShadow: "0 0 20px rgba(124,92,252,0.3)",
-            }}>
-            Hire Me
-          </a>
-        </div>
+<div
+  className="nav-mobile-menu"
+  style={{
+    display: menuOpen ? "flex" : "none",
+    flexDirection: "column",
+    padding: "12px 24px 24px",
+    gap: 4,
+    borderTop: "1px solid rgba(255,255,255,0.06)",
+  }}
+>
+  {links.map((link) => (
+    <a
+      key={link}
+      href={`#${link.toLowerCase()}`}
+      onClick={handleNav}
+      style={{
+        fontSize: 16,
+        color: "#a09db8",
+        padding: "14px 12px",
+        borderRadius: 10,
+        transition: "all .2s",
+        fontWeight: 400,
+        borderBottom: "1px solid rgba(255,255,255,0.04)",
+      }}
+      onMouseEnter={(e) => {
+        e.target.style.color = "#f0eefa";
+        e.target.style.background = "rgba(255,255,255,0.04)";
+      }}
+      onMouseLeave={(e) => {
+        e.target.style.color = "#a09db8";
+        e.target.style.background = "transparent";
+      }}
+    >
+      {link}
+    </a>
+  ))}
+
+  {/* Explore Work */}
+  <a
+    href="https://project-portfolio-ruddy-five.vercel.app/"
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={handleNav}
+    style={{
+      marginTop: 10,
+      padding: "14px",
+      borderRadius: 10,
+      textAlign: "center",
+      border: "1px solid rgba(124,92,252,0.35)",
+      background: "rgba(124,92,252,0.08)",
+      color: "#f0eefa",
+      fontSize: 15,
+      fontWeight: 500,
+      transition: "all .25s",
+    }}
+  >
+    Explore Work
+  </a>
+
+  {/* Hire Me */}
+  <a
+    href="mailto:subinsuresh8088@gmail.com"
+    onClick={handleNav}
+    style={{
+      marginTop: 10,
+      padding: "14px",
+      borderRadius: 10,
+      textAlign: "center",
+      background: "linear-gradient(135deg, #7c5cfc, #c084fc)",
+      color: "#fff",
+      fontSize: 15,
+      fontWeight: 500,
+      boxShadow: "0 0 20px rgba(124,92,252,0.3)",
+    }}
+  >
+    Hire Me
+  </a>
+</div>
       </nav>
 
       <style>{`
