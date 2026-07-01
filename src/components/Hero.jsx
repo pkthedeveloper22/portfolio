@@ -281,7 +281,7 @@ export default function Hero() {
             Contact Me
           </a>
 
-          <a href="/Subin_PK_CV.pdf" download className="cta-resume" style={{
+          <a href="/Subin-PK_CV.pdf" download className="cta-resume" style={{
             padding: "12px 24px", borderRadius: 10,
             border: "1px solid rgba(56,189,248,0.25)",
             background: "rgba(56,189,248,0.06)",
